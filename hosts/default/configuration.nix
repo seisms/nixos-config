@@ -116,12 +116,12 @@
 
 
     # Enable automatic login for the user.
-    services.xserver.displayManager.autoLogin.enable = true;
-    services.xserver.displayManager.autoLogin.user = "box";
+    # services.xserver.displayManager.autoLogin.user = "box";
+    # services.xserver.displayManager.autoLogin.enable = true;
 
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-    systemd.services."getty@tty1".enable = false;
-    systemd.services."autovt@tty1".enable = false;
+    # systemd.services."autovt@tty1".enable = false;
+    # systemd.services."getty@tty1".enable = false;
 
     # Install firefox.
     programs.firefox.enable = true;
@@ -143,6 +143,7 @@
         pkgs.gnomeExtensions.logo-menu
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
+        pkgs.texliveFull
     ];
 
     environment.gnome.excludePackages = with pkgs; [ 
@@ -184,6 +185,15 @@
 
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
+    services.flatpak.enable = true;
+
+    systemd.services.flatpak-repo = {
+        wantedBy = [ "multi-user.target" ];
+        path = [ pkgs.flatpak ];
+            script = '' 
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+      ''; 
+    };
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];

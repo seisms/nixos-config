@@ -125,6 +125,10 @@
         userName = "seism";
         userEmail = "dcalejandro667@proton.me";
     };
+    
+    programs.zathura = {
+        enable = true;
+    };
 
     # Let Home Manager install and manage itself.
     programs.home-manager.enable = true;
