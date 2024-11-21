@@ -143,7 +143,7 @@
         pkgs.gnomeExtensions.logo-menu
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
-        pkgs.texlive.scheme-full
+        pkgs.texlive.combined.scheme-full
     ];
 
     environment.gnome.excludePackages = with pkgs; [ 
@@ -173,6 +173,7 @@
 
             vimtex.settings = {
                 view_method = "zathura";
+                texlivePackage = pkgs.texlive.combined.scheme-full;
             };
         };
     };
