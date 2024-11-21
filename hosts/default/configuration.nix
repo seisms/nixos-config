@@ -143,7 +143,7 @@
         pkgs.gnomeExtensions.logo-menu
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
-        pkgs.texlive
+        pkgs.texlive.scheme-full
     ];
 
     environment.gnome.excludePackages = with pkgs; [ 
