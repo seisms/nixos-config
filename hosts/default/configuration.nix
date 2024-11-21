@@ -133,6 +133,7 @@
         #  wget
         pkgs.git
         pkgs.gcc
+        pkgs.file-roller
         pkgs.gnomeExtensions.appindicator
         pkgs.gnomeExtensions.blur-my-shell
         pkgs.gnomeExtensions.caffeine
@@ -142,6 +143,13 @@
         pkgs.gnomeExtensions.logo-menu
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
+    ];
+
+    environment.gnome.excludePackages = with pkgs; [ 
+        geary
+        gnome-tour
+        epiphany
+        evince
     ];
 
     programs.nixvim = {
