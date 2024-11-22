@@ -164,13 +164,25 @@
             wakatime.enable = lib.mkForce false;
             zen-mode.enable = true;
             render-markdown.enable = true;
+            smartcolumn.enable = true;
+            
+            # Settings
             lualine = {
                 settings.options.section_separators = {
                     left = "|";
                     right = "|";
                 };
             };
-
+            smartcolumn.settings = {
+                disabled_filetypes = [
+                    "markdown"
+                    "checkhealth"
+                    "help"
+                    "lspinfo"
+                    "text"
+                    "latex"
+                ];
+            };
             vimtex.settings = {
                 view_method = "zathura";
                 texlivePackage = pkgs.texlive.combined.scheme-full;
