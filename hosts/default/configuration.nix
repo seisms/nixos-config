@@ -13,6 +13,7 @@
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
 
     networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -85,6 +86,8 @@
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
+    documentation.dev.enable = true;
+
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.box = {
         isNormalUser = true;
@@ -133,6 +136,8 @@
         #  wget
         pkgs.git
         pkgs.gcc
+        pkgs.man-pages
+        pkgs.man-pages-posix
         pkgs.file-roller
         pkgs.gnomeExtensions.appindicator
         pkgs.gnomeExtensions.blur-my-shell
@@ -156,16 +161,16 @@
     programs.nixvim = {
         enable = true;
         imports = [ inputs.Neve.nixvimModule ];
-
+    
         viAlias = true;
         vimAlias = true;
-
+    
         plugins = {
             wakatime.enable = lib.mkForce false;
             zen-mode.enable = true;
             render-markdown.enable = true;
             smartcolumn.enable = true;
-            
+    
             # Settings
             lualine = {
                 settings.options.section_separators = {
@@ -189,6 +194,7 @@
             };
         };
     };
+
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.

@@ -86,7 +86,6 @@
         '';
         plugins = [
             {name = "puffer-fish"; src = pkgs.fishPlugins.puffer.src;}
-            {name = "autopair-fish"; src = pkgs.fishPlugins.autopair-fish;}
         ];
     };
 
