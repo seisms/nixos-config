@@ -136,6 +136,8 @@
         #  wget
         pkgs.git
         pkgs.gcc
+        pkgs.gnumake
+        pkgs.wl-clipboard
         pkgs.man-pages
         pkgs.man-pages-posix
         pkgs.file-roller
@@ -149,6 +151,7 @@
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
         pkgs.texlive.combined.scheme-full
+        pkgs.bitwarden
     ];
 
     environment.gnome.excludePackages = with pkgs; [ 
@@ -161,12 +164,16 @@
     programs.nixvim = {
         enable = true;
         imports = [ inputs.Neve.nixvimModule ];
-    
         viAlias = true;
         vimAlias = true;
     
+        clipboard = {
+            providers.wl-copy.enable = true;
+        };
+
         plugins = {
             wakatime.enable = lib.mkForce false;
+            lint.enable = lib.mkForce false;
             zen-mode.enable = true;
             render-markdown.enable = true;
             smartcolumn.enable = true;
