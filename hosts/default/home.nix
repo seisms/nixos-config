@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs,... }:
 
 {
     # Home Manager needs a bit of information about you and the paths it should
@@ -18,16 +18,11 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = [
-        # # Adds the 'hello' command to your environment. It prints a friendly
-        # # "Hello, world!" when run.
-        # pkgs.hello
-
         # # It is sometimes useful to fine-tune packages, for example, by applying
         # # overrides. You can do that directly here, just don't forget the
         # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
         # # fonts?
         # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
         # # You can also create simple shell scripts directly inside your
         # # configuration. For example, this adds a command 'my-hello' to your
         # # environment:
@@ -75,15 +70,19 @@
         enable = true;
         enableFishIntegration = true;
     };
+
     programs.fastfetch = {
         enable = true;
     };
 
+    programs.starship.enable = true;
+
     programs.fish = {
         enable = true;
         interactiveShellInit = ''
-        set fish_greeting
+         set fish_greeting
         '';
+
         plugins = [
             {name = "puffer-fish"; src = pkgs.fishPlugins.puffer.src;}
         ];
@@ -127,6 +126,18 @@
     
     programs.zathura = {
         enable = true;
+    };
+
+    programs.tmux = {
+        enable = true;
+        shortcut = "Space";
+        clock24 = true;
+        keyMode = "vi";
+        plugins = [ 
+            pkgs.tmuxPlugins.vim-tmux-navigator 
+            pkgs.tmuxPlugins.sensible
+            { plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }
+        ];
     };
 
     # Let Home Manager install and manage itself.
