@@ -156,7 +156,6 @@
         pkgs.gnomeExtensions.logo-menu
         pkgs.gnomeExtensions.media-controls
         pkgs.gnome-tweaks
-        pkgs.texlive.combined.scheme-full
         pkgs.bitwarden
     ];
 
@@ -183,6 +182,7 @@
             zen-mode.enable = true;
             render-markdown.enable = true;
             smartcolumn.enable = true;
+            vimtex.enable = lib.mkForce false;
     
             # Settings
             lualine = {
@@ -200,10 +200,6 @@
                     "text"
                     "latex"
                 ];
-            };
-            vimtex.settings = {
-                view_method = "zathura";
-                texlivePackage = pkgs.texlive.combined.scheme-full;
             };
         };
     };
