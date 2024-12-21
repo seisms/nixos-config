@@ -138,6 +138,9 @@
             pkgs.tmuxPlugins.sensible
             { plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }
         ];
+        extraConfig =  ''
+bind C-l send-keys 'C-l'
+            '';
     };
 
     # Let Home Manager install and manage itself.
