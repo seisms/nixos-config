@@ -73,6 +73,13 @@
 
     programs.fastfetch = {
         enable = true;
+        settings = 
+            {
+            logo =
+            {
+                source = "nixos_small";
+            };
+        };
     };
 
     programs.starship.enable = true;
@@ -123,7 +130,7 @@
         userName = "seism";
         userEmail = "dcalejandro667@proton.me";
     };
-    
+
     programs.zathura = {
         enable = true;
     };
@@ -131,6 +138,7 @@
     programs.tmux = {
         enable = true;
         shortcut = "Space";
+        mouse = true;
         clock24 = true;
         keyMode = "vi";
         plugins = [ 
@@ -140,7 +148,7 @@
         ];
         extraConfig =  ''
 bind C-l send-keys 'C-l'
-            '';
+        '';
     };
 
     # Let Home Manager install and manage itself.

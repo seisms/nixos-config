@@ -10,6 +10,12 @@
         inputs.home-manager.nixosModules.default
     ];
 
+    services.postgresql = {
+        enable = true;
+        ensureDatabases = [ "usach_segura" ];
+        enableTCPIP = true;
+    };
+
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
