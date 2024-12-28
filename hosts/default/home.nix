@@ -75,54 +75,122 @@
         enable = true;
         settings = 
             {
-            logo =
-            {
-                source = "nixos_small";
+                schema = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+                logo = {
+                    padding = {
+                        top = 2;
+                        left = 1;
+                        right = 2;
+                    };
+                };
+                display = {
+                    separator = " ";
+                };
+                modules = [
+                    {
+                        type = "title";
+                        format = "{#1}╭───────────── {#}{user-name-colored}";
+                    }
+                    {
+                        type = "custom";
+                        format = "{#1}| {#}System Information";
+                    }
+                    {
+                        type = "os";
+                        key = "{#separator}| 󰍹 os";
+                    }
+                    {
+                        type = "kernel";
+                        key = "{#separator}│  {#keys}󰒋 Kernel";
+                    }
+                    {
+                        type = "uptime";
+                        key = "{#separator}│  {#keys}󰅐 Uptime";
+                    }
+                    {
+                        type = "packages";
+                        key = "{#separator}│  {#keys}󰏖 Packages";
+                        format = "{all}";
+                    }
+                    {
+                        type = "custom";
+                        format = "{#1}│";
+                    }
+                    {
+                        type = "custom";
+                        format = "{#1}│ {#}Desktop Environment";
+                    }
+                    {
+                        type = "de";
+                        key = "{#separator}│  {#keys}󰧨 DE";
+                    }
+                    {
+                        type = "display";
+                        key = "{#separator}│  {#keys}󰹑 Resolution";
+                    }
+                    {
+                        type = "shell";
+                        key = "{#separator}│  {#keys}󰞷 Shell";
+                    }
+                    {
+                        type = "custom";
+                        format = "{#1}│";
+                    }
+                    {
+                        type = "custom";
+                        format = "{#1}│ {#}Hardware Information";
+                    }
+                    {
+                        type = "cpu";
+                        key = "{#separator}│  {#keys}󰻠 CPU";
+                    }
+                    {
+                        key = "{#separator}│  {#keys}󰍛 Memory";
+                        type = "memory";
+                    }
+                    {
+                        type = "disk";
+                        key = "{#separator}│  {#keys}󰋊 Disk (/)";
+                        folders = "/";
+                    }
+                    {
+                        type = "custom";
+                            format = "{#1}│";
+                    }
+                    {
+                        type = "colors";
+                        key = "{#separator}│";
+                        symbol = "circle";
+                    }
+                    {
+                        type = "custom";
+                            format = "{#1}╰───────────────────────────────╯";
+                    }
+                ];
             };
-        };
     };
 
     programs.starship.enable = true;
+
+    programs.kitty = {
+        enable = true;
+        shellIntegration.enableFishIntegration = true;
+        font.name = "JetBrainsMono NFM";
+        themeFile = "Seti";
+    };
 
     programs.fish = {
         enable = true;
         interactiveShellInit = ''
          set fish_greeting
+         alias lh "l -h"
+         alias llh "ll -h"
         '';
-
         plugins = [
             {name = "puffer-fish"; src = pkgs.fishPlugins.puffer.src;}
+            {name = "colored-man-pages"; src = pkgs.fishPlugins.colored-man-pages.src;}
+            {name = "autopair"; src =  pkgs.fishPlugins.autopair.src;}
         ];
-    };
-
-    programs.alacritty = {
-        enable = true;
-
-        settings = {
-            font = {
-                size = 16;
-            };
-
-            font.normal = {
-                family = "JetBrainsMono NFM";
-                style = "Regular";
-            };
-
-            font.bold = {
-                family = "JetBrainsMono NFM";
-                style = "Bold";
-            };
-
-            font.italic = {
-                family = "JetBrainsMono NFM";
-                style = "Italic";
-            };
-
-            font.bold_italic = {
-                family = "JetBrainsMono NFM";
-                style = "Bold Italic";
-            };
-        };
     };
 
     programs.git = {

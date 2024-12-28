@@ -108,6 +108,7 @@
                 dynamips
                 vpcs
                 inetutils
+                tela-circle-icon-theme
             ];
     };
 
@@ -189,7 +190,7 @@
             render-markdown.enable = true;
             smartcolumn.enable = true;
             vimtex.enable = lib.mkForce false;
-    
+
             # Settings
             lualine = {
                 settings.options.section_separators = {
@@ -208,6 +209,10 @@
                 ];
             };
         };
+        extraPackages = with pkgs; [
+            pyright
+            ruff
+        ];
     };
 
 
