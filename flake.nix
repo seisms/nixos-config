@@ -9,7 +9,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        Neve.url = "github:seisms/Neve";
+        Neve = {
+            url = "github:seisms/Neve";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         nixvim = {
             url = "github:nix-community/nixvim";

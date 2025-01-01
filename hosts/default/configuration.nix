@@ -87,8 +87,10 @@
         #media-session.enable = true;
     };
 
-    fonts.packages = with pkgs;
-        [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+    fonts.packages =
+        [
+            pkgs.nerd-fonts.jetbrains-mono
+        ];
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
@@ -192,6 +194,7 @@
             vimtex.enable = lib.mkForce false;
 
             # Settings
+
             lualine = {
                 settings.options.section_separators = {
                     left = "|";
