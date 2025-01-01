@@ -192,9 +192,6 @@
             render-markdown.enable = true;
             smartcolumn.enable = true;
             vimtex.enable = lib.mkForce false;
-
-            # Settings
-
             lualine = {
                 settings.options.section_separators = {
                     left = "|";

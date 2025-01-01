@@ -10,7 +10,7 @@
         };
 
         Neve = {
-            url = "github:seisms/Neve";
+            url = "github:jee-mj/Neve";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
