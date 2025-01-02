@@ -65,11 +65,10 @@
         variant = "";
     };
 
+    virtualisation.docker.enable = true;
+
     # Configure console keymap
     console.keyMap = "la-latin1";
-
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
 
     # Enable sound with pipewire.
     hardware.pulseaudio.enable = false;
@@ -100,7 +99,7 @@
     users.users.box = {
         isNormalUser = true;
         description = "box";
-        extraGroups = [ "networkmanager" "wheel" ];
+        extraGroups = [ "networkmanager" "wheel" "docker"];
         packages = with pkgs;
             [
                 #  thunderbird
@@ -180,6 +179,15 @@
         imports = [ inputs.Neve.nixvimModule ];
         viAlias = true;
         vimAlias = true;
+        
+        opts = {
+            shiftwidth = lib.mkForce 4;
+            tabstop = lib.mkForce 4;
+        };
+
+        performance = {
+            byteCompileLua.enable = true;
+        };
     
         clipboard = {
             providers.wl-copy.enable = true;
