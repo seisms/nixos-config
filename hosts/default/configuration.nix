@@ -200,6 +200,8 @@
             render-markdown.enable = true;
             smartcolumn.enable = true;
             vimtex.enable = lib.mkForce false;
+            copilot-lua.enable = lib.mkForce false;
+
             lualine = {
                 settings.options.section_separators = {
                     left = "|";

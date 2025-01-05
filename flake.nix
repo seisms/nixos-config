@@ -10,7 +10,7 @@
         };
 
         Neve = {
-            url = "github:jee-mj/Neve";
+            url = "github:redyf/Neve";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
