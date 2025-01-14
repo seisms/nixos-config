@@ -172,6 +172,15 @@
 
     programs.starship.enable = true;
 
+    # programs.ghostty = {
+    #     enable = true;
+    #     enableFishIntegration = true;
+    #     installVimSyntax = true;
+    #     settings = {
+    #         theme = "Seti";
+    #     };
+    # };
+
     programs.kitty = {
         enable = true;
         shellIntegration.enableFishIntegration = true;

@@ -10,11 +10,11 @@
         inputs.home-manager.nixosModules.default
     ];
 
-    services.postgresql = {
-        enable = true;
-        ensureDatabases = [ "usach_segura" ];
-        enableTCPIP = true;
-    };
+    # services.postgresql = {
+    #     enable = true;
+    #     ensureDatabases = [ "usach_segura" ];
+    #     enableTCPIP = true;
+    # };
 
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
@@ -56,8 +56,18 @@
     services.xserver.enable = true;
 
     # Enable the GNOME Desktop Environment.
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
+    # services.xserver.displayManager.gdm.enable = true;
+    # services.xserver.desktopManager.gnome.enable = true;
+
+    #Enable Plasma 6 DE
+    services.xserver.displayManager.sddm.enable = true;
+    services.xserver.desktopManager.plasma6.enable = true;
+
+    environment.plasma6.excludePackages = with pkgs.kdePackages; [
+        elisa
+        konsole
+        kate
+    ];
 
     # Configure keymap in X11
     services.xserver.xkb = {
@@ -154,25 +164,25 @@
         pkgs.wl-clipboard
         pkgs.man-pages
         pkgs.man-pages-posix
-        pkgs.file-roller
-        pkgs.gnomeExtensions.appindicator
-        pkgs.gnomeExtensions.blur-my-shell
-        pkgs.gnomeExtensions.caffeine
-        pkgs.gnomeExtensions.compiz-alike-magic-lamp-effect
-        pkgs.gnomeExtensions.dash-to-dock
-        pkgs.gnomeExtensions.just-perfection
-        pkgs.gnomeExtensions.logo-menu
-        pkgs.gnomeExtensions.media-controls
-        pkgs.gnome-tweaks
+        # pkgs.file-roller
+        # pkgs.gnomeExtensions.appindicator
+        # pkgs.gnomeExtensions.blur-my-shell
+        # pkgs.gnomeExtensions.caffeine
+        # pkgs.gnomeExtensions.compiz-alike-magic-lamp-effect
+        # pkgs.gnomeExtensions.dash-to-dock
+        # pkgs.gnomeExtensions.just-perfection
+        # pkgs.gnomeExtensions.logo-menu
+        # pkgs.gnomeExtensions.media-controls
+        # pkgs.gnome-tweaks
         pkgs.bitwarden
     ];
 
-    environment.gnome.excludePackages = with pkgs; [ 
-        geary
-        gnome-tour
-        epiphany
-        evince
-    ];
+    # environment.gnome.excludePackages = with pkgs; [ 
+    #     geary
+    #     gnome-tour
+    #     epiphany
+    #     evince
+    # ];
 
     programs.nixvim = {
         enable = true;
@@ -200,6 +210,7 @@
             render-markdown.enable = true;
             smartcolumn.enable = true;
             vimtex.enable = lib.mkForce false;
+            fidget.enable = lib.mkForce false; # Workaround because of renamed opts
             copilot-lua.enable = lib.mkForce false;
 
             lualine = {
