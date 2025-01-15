@@ -9,6 +9,8 @@
         ./hardware-configuration.nix
         inputs.home-manager.nixosModules.default
     ];
+    
+    fonts.packages = with pkgs; [nerdfonts];
 
     # services.postgresql = {
     #     enable = true;
@@ -96,10 +98,6 @@
         #media-session.enable = true;
     };
 
-    fonts.packages =
-        [
-            pkgs.nerd-fonts.jetbrains-mono
-        ];
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
 
@@ -204,6 +202,7 @@
         };
 
         plugins = {
+	    lsp.servers.ts_query_ls.enable = lib.mkForce false;
             wakatime.enable = lib.mkForce false;
             lint.enable = lib.mkForce false;
             zen-mode.enable = true;
