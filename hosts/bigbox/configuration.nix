@@ -18,6 +18,9 @@
     #     enableTCPIP = true;
     # };
 
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -156,12 +159,12 @@
     environment.systemPackages = with pkgs; [
         #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         #  wget
-        pkgs.git
-        pkgs.gcc
-        pkgs.gnumake
-        pkgs.wl-clipboard
-        pkgs.man-pages
-        pkgs.man-pages-posix
+        git
+        gcc
+        gnumake
+        wl-clipboard
+        man-pages
+        man-pages-posix
         # pkgs.file-roller
         # pkgs.gnomeExtensions.appindicator
         # pkgs.gnomeExtensions.blur-my-shell
@@ -172,7 +175,7 @@
         # pkgs.gnomeExtensions.logo-menu
         # pkgs.gnomeExtensions.media-controls
         # pkgs.gnome-tweaks
-        pkgs.bitwarden
+        bitwarden
     ];
 
     # environment.gnome.excludePackages = with pkgs; [ 
