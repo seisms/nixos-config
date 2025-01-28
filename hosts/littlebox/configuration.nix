@@ -7,6 +7,7 @@
 {
     imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
+        ../../modules/networking.nix
         inputs.home-manager.nixosModules.default
     ];
 
@@ -22,16 +23,6 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    networking.hostName = "nixos"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    # Enable networking
-    networking.networkmanager.enable = true;
 
     # Enable flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -179,13 +170,6 @@
         # pkgs.gnome-tweaks
         pkgs.bitwarden
     ];
-
-    # environment.gnome.excludePackages = with pkgs; [ 
-    #     geary
-    #     gnome-tour
-    #     epiphany
-    #     evince
-    # ];
 
     programs.nixvim = {
         enable = true;
