@@ -12,12 +12,11 @@
 
         Neve = {
             url = "github:redyf/Neve";
-            inputs.nixpkgs.follows = "unstable";
         };
 
         nixvim = {
             url = "github:nix-community/nixvim";
-            inputs.nixpkgs.follows = "unstable";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         minimal-tmux = {
