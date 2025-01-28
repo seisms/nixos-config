@@ -98,9 +98,10 @@
         #media-session.enable = true;
     };
 
-    fonts.packages =
+    fonts.packages = with pkgs;
         [
-            pkgs.nerd-fonts.jetbrains-mono
+            (nerdfonts.override { fonts = ["JetBrainsMono"]; })
+            jetbrains-mono
         ];
     # Enable touchpad support (enabled default in most desktopManager).
     # services.xserver.libinput.enable = true;
