@@ -1,4 +1,4 @@
-{ config, pkgs, inputs,... }:
+{ config, pkgs, inputs, system,... }:
 
 {
     # Home Manager needs a bit of information about you and the paths it should
@@ -29,6 +29,7 @@
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
+        inputs.zen-browser.packages."${system}".specific
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage

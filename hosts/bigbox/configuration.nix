@@ -7,7 +7,6 @@
 {
     imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        ../../modules/networking.nix
         inputs.home-manager.nixosModules.default
     ];
     
@@ -112,6 +111,7 @@
                 vpcs
                 inetutils
                 tela-circle-icon-theme
+                unrar-wrapper
             ];
     };
 
@@ -141,9 +141,6 @@
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
     # systemd.services."autovt@tty1".enable = false;
     # systemd.services."getty@tty1".enable = false;
-
-    # Install firefox.
-    programs.firefox.enable = true;
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget

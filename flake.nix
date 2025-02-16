@@ -18,7 +18,7 @@
             url = "github:nix-community/nixvim";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
+        zen-browser.url = "github:0xc000022070/zen-browser-flake";
         minimal-tmux = {
             url = "github:niksingh710/minimal-tmux-status";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +31,7 @@
                 specialArgs = {inherit inputs;};
                 modules = [
                     ./hosts/littlebox/configuration.nix
+                    ./modules/networking.nix
                     inputs.home-manager.nixosModules.default
                     inputs.nixvim.nixosModules.nixvim
                 ];
@@ -39,6 +40,7 @@
                specialArgs = {inherit inputs;};
                modules = [
                     ./hosts/bigbox/configuration.nix
+                    ./modules/networking.nix
                     inputs.home-manager.nixosModules.default
                     inputs.nixvim.nixosModules.nixvim
 	       ];   
