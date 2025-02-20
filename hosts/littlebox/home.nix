@@ -1,5 +1,7 @@
-{ config, pkgs, inputs, system... }:
-
+{ config, pkgs, inputs,... }:
+let 
+    system = "x86_64-linux";
+in
 {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
