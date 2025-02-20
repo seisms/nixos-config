@@ -1,11 +1,12 @@
-{ config, pkgs, inputs, system,... }:
-
-{
+{ config, pkgs, inputs, ... }:
+let 
+    system = "x86_64-linux";
+in
+    {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     home.username = "box";
     home.homeDirectory = "/home/box";
-
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
     # introduces backwards incompatible changes.
@@ -29,7 +30,7 @@
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
-        inputs.zen-browser.packages."${system}".specific
+        inputs.zen-browser.packages."${system}".default
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -156,7 +157,7 @@
                     }
                     {
                         type = "custom";
-                            format = "{#1}│";
+                        format = "{#1}│";
                     }
                     {
                         type = "colors";
@@ -165,7 +166,7 @@
                     }
                     {
                         type = "custom";
-                            format = "{#1}╰───────────────────────────────╯";
+                        format = "{#1}╰───────────────────────────────╯";
                     }
                 ];
             };
