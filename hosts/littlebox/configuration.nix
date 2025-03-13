@@ -106,12 +106,6 @@
         packages = with pkgs;
             [
                 #  thunderbird
-                gns3-gui
-                gns3-server
-                ubridge
-                dynamips
-                vpcs
-                inetutils
                 tela-circle-icon-theme
             ];
     };
