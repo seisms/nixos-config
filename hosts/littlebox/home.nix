@@ -1,5 +1,7 @@
-{ config, pkgs, inputs, system... }:
-
+{ config, pkgs, inputs,... }:
+let 
+    system = "x86_64-linux";
+in
 {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
@@ -29,7 +31,7 @@
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
-        inputs.zen-browser.packages."${system}".specific
+        inputs.zen-browser.packages."${system}".default
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
