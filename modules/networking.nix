@@ -4,8 +4,8 @@
         hostName = "nixos"; # Define your hostname.
         networkmanager.enable = true;
         hosts = {
-            "192.168.1.11" = ["bigbox"];
-            "192.168.1.13" = ["littlebox"];
+            "0.0.0.0" = ["bigbox"];
+            "1.1.1.1" = ["littlebox"];
         };
 
         # Enables wireless support via wpa_supplicant.
